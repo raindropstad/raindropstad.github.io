@@ -172,6 +172,77 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://raindropstad.top/2021/05/04/proxy%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/tx.png">
+      <meta itemprop="name" content="Tad">
+      <meta itemprop="description" content="...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/04/proxy%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">proxy配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-04 19:11:44" itemprop="dateCreated datePublished" datetime="2021-05-04T19:11:44+08:00">2021-05-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/" itemprop="url" rel="index"><span itemprop="name">前后端分离</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在不同的vue-cli版本中配置是不同的</p>
+<p>现在重点介绍如何在vue-cli3版本下vue.config.js文件的配置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    <span class="comment">// publicPath: &#x27;./&#x27;,</span></span><br><span class="line">    <span class="comment">// outputDir:&#x27;dist&#x27;,</span></span><br><span class="line">    <span class="comment">// assetsDir:&#x27;static&#x27;,</span></span><br><span class="line">    configureWebpack: &#123;</span><br><span class="line">        resolve: &#123;</span><br><span class="line">            alias: &#123;</span><br><span class="line">                <span class="string">&#x27;assets&#x27;</span>: <span class="string">&#x27;@/assets&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;common&#x27;</span>: <span class="string">&#x27;@/common&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;components&#x27;</span>: <span class="string">&#x27;@/components&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;network&#x27;</span>: <span class="string">&#x27;@/network&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;views&#x27;</span>: <span class="string">&#x27;@/views&#x27;</span>,</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    devServer: &#123;</span><br><span class="line">      proxy: &#123;</span><br><span class="line">        <span class="string">&#x27;/api&#x27;</span>: &#123;</span><br><span class="line">          <span class="comment">// 此处的写法，目的是为了 将 /api 替换成 https://autumnfish.cn/</span></span><br><span class="line">          target: <span class="string">&#x27;https://autumnfish.cn/&#x27;</span>,</span><br><span class="line">          <span class="comment">//  target: &#x27;http://localhost:8081&#x27;,</span></span><br><span class="line">          <span class="comment">// 允许跨域</span></span><br><span class="line">          changeOrigin: <span class="literal">true</span>,</span><br><span class="line">          ws: <span class="literal">true</span>,</span><br><span class="line">          pathRewrite: &#123;</span><br><span class="line">            <span class="string">&#x27;^/api&#x27;</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">            <span class="comment">//&#x27;^/api&#x27;: &#x27;/SSM_war_exploded&#x27;</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,<span class="string">&#x27;ips&#x27;</span>:&#123;</span><br><span class="line">          target: <span class="string">&#x27;http://localhost:8081&#x27;</span>,</span><br><span class="line">          <span class="comment">// 允许跨域</span></span><br><span class="line">          changeOrigin: <span class="literal">true</span>,</span><br><span class="line">          ws: <span class="literal">true</span>,</span><br><span class="line">          pathRewrite: &#123;</span><br><span class="line">            <span class="string">&#x27;^/ips&#x27;</span>: <span class="string">&#x27;/SSM_war_exploded&#x27;</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>如果是在vue-cli2版本下，则需要修改config文件下的index.js文件，配置proxyTable属性实现接入多个后端</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://raindropstad.top/2021/04/29/%E9%9D%A2%E8%AF%95%E5%92%8C%E7%AC%94%E8%AF%95%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -358,6 +429,84 @@
 <p><img src="http://m.qpic.cn/psc?/V51QZAMp3YAmt33m3cvp0XrXVm4A7295/45NBuzDIW489QBoVep5mcaNCsPdusjrcocAV7ltOSMtYwICCvRQAomTcY3YbdJzPvxsUL7KzDgHxjJxq0g.F5DftUXvyhnTiTPKTKYGvuro!/b&bo=PgLxAD4C8QADGTw!&rf=viewer_4&t=5"></p>
 </li>
 </ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://raindropstad.top/2021/04/27/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/tx.png">
+      <meta itemprop="name" content="Tad">
+      <meta itemprop="description" content="...">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/27/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">快速排序</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-27 22:55:31" itemprop="dateCreated datePublished" datetime="2021-04-27T22:55:31+08:00">2021-04-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-03 21:50:18" itemprop="dateModified" datetime="2021-05-03T21:50:18+08:00">2021-05-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><blockquote>
+<p>参考链接：</p>
+<p><a href="">快速排序</a></p>
+</blockquote>
+<p>说白了就是用了分治的思想，将数组的第一个数设为基准，从右往左搜索比基准小的数，找到后进行替换并更换搜索方向，不断重复这个流程。</p>
 
       
     </div>
@@ -893,146 +1042,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://raindropstad.top/2020/10/17/%E8%BD%AF%E8%80%83-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/tx.png">
-      <meta itemprop="name" content="Tad">
-      <meta itemprop="description" content="...">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/17/%E8%BD%AF%E8%80%83-%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%B8%88/" class="post-title-link" itemprop="url">软件设计师</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-17 14:13:46" itemprop="dateCreated datePublished" datetime="2020-10-17T14:13:46+08:00">2020-10-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-27 22:53:02" itemprop="dateModified" datetime="2021-04-27T22:53:02+08:00">2021-04-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">杂谈</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="软件设计师"><a href="#软件设计师" class="headerlink" title="软件设计师"></a>软件设计师</h1><h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><ul>
-<li>2019<a target="_blank" rel="noopener" href="https://blog.csdn.net/jihezhixin/article/details/88652099?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-6.nonecase">大纲</a></li>
-<li></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://raindropstad.top/2020/10/17/%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/tx.png">
-      <meta itemprop="name" content="Tad">
-      <meta itemprop="description" content="...">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/17/%E5%A5%87%E6%8A%80%E6%B7%AB%E5%B7%A7/" class="post-title-link" itemprop="url">一些没什么用的小玩意</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-10-17 14:13:46 / 修改时间：14:16:20" itemprop="dateCreated datePublished" datetime="2020-10-17T14:13:46+08:00">2020-10-17</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="奇技淫巧"><a href="#奇技淫巧" class="headerlink" title="奇技淫巧"></a>奇技淫巧</h1><h2 id="查看电脑电池寿命"><a href="#查看电脑电池寿命" class="headerlink" title="查看电脑电池寿命"></a>查看电脑电池寿命</h2><p><strong>powercfg /batteryreport /output “C:\battery_report.html”</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1100,20 +1113,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
